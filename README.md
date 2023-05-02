@@ -21,24 +21,31 @@ go get github.com/xuender/go-py
 package main
 
 import (
-  "fmt"
+	"fmt"
+	py "github.com/xuender/go-py"
+)
 
-  "github.com/xuender/go-py"
-  )
-
-func main(){
-  fmt.Println(py.Pinyin("阿弥陀佛"))
-  fmt.Println(py.Pinyin("阿弥陀佛", py.Tone))
-  fmt.Println(py.Pinyin("阿弥陀佛", py.NoTone))
-  fmt.Println(py.Pinyin("阿弥陀佛", py.Init))
-  fmt.Println(py.Initials("阿弥陀佛"))
-
-  // output:
-  // [a1 mi2 tuo2 fu2]
-  // [ā mí tuó fú]
-  // [a mi tuo fu]
-  // [a m t f]
-  // amtf
+func main() {
+	hans := "曾某曾是异乡人！"
+	fmt.Println(py.Pinyin(hans))
+	fmt.Println(py.Pinyin(hans, py.Tone))
+	fmt.Println(py.Pinyins(hans, py.Tone))
+	fmt.Println(py.Pinyin(hans, py.NoTone))
+	fmt.Println(py.Pinyins(hans, py.NoTone))
+	fmt.Println(py.Pinyin(hans, py.Init))
+	fmt.Println(py.Pinyins(hans, py.Init))
+	fmt.Println(py.Initials(hans))
+	fmt.Println(py.Initials(hans, true))
+	// output:
+	// [ce2ng mo3u ce2ng shi4 yi4 xia1ng re2n ！]
+	// [céng mǒu céng shì yì xiāng rén ！]
+	// [[céng zēng] [mǒu méi] [céng zēng] [shì tí] [yì yí] [xiāng] [rén] [！]]
+	// [ceng mou ceng shi yi xiang ren ！]
+	// [[ceng zeng] [mou mei] [ceng zeng] [shi ti] [yi] [xiang] [ren] [！]]
+	// [c m c s y x r ！]
+	// [[c z] [m] [c z] [s t] [y] [x] [r] [！]]
+	// cmcsyxr！
+	// czmczstyxr！
 }
 ```
 
